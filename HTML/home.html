@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            min-width: 1130px;
+            box-sizing: border-box;
+        }
+        #header {
+            position : relative;
+            background-color: white;
+        }
+        #header_up {
+            position: relative;
+            height: 160px;
+            width: 1130;
+            border-bottom: 1px solid gray;
+        }
+        #logo {
+            position : relative;
+            height: 100%;
+        }
+        #logo_img {
+            position : relative;
+            top : 50%;
+            left: 10px;
+            margin : 0;
+        }
+        #search {
+            position : relative;
+            top : -50%;
+            left: 100px;
+            margin : 0;
+        }
+        #account {
+            position : relative;
+            top : -100%;
+            left : 70%;
+        }
+        #header_nav {
+            position : relative;
+            width: 1130px;
+        }
+        ul {
+            list-style: none;
+        }
+        #nav_box {
+            float : left;
+            font-size : 20px;
+            line-height: 30px;
+            font-weight: 700;
+            color: black;
+            letter-spacing: 0px;
+        }
+        #header_nav .nav_item {
+            float : left;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="header_up">
+            <div id="logo">
+                <a id="logo_img" href="home.html">GlofMate</a>
+            </div>
+            <div id="search">
+                <from id="search_from">
+                    <input id="search_text" type="text" title="검색어">
+                    <button id="serch_btn" type="submit" title="검색" value="검색">검색</button>
+                </from>
+            </div>
+            <div id="account">
+                <a>로그인</a>
+                <a>회원가입</a>
+            </div>
+        </div>
+        <div id="header_nav">
+            <ul class="nav_box">
+                <li class="nav_item">
+                    <a href="모임메인페이지">모임</a>
+                </li>
+                <li class="nav_item">
+                    <a href="액티비티메인페이지">액티비티</a>
+                </li>
+                <li class="nav_item">
+                    <a href="이벤트메인페이지">이벤트</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="container">
+        <div id="event_ad">
+            배너광고
+        </div>
+        <div id="recommend_club">
+            <div>
+                <p>추천 모임</p>
+                <a href="모임메인페이지">more</a>
+            </div>
+            <a href="모임추천1">추천1</a>
+            <a href="모임추천2">추천2</a>
+        </div>
+        <div id="recommend_activity">
+            <div>
+                <p>추천 액티비티</p>
+                <a href="액티비티메인페이지">more</a>
+            </div>
+            <a href="액티비티추천1">추천1</a>
+            <a href="액티비티추천2">추천2</a>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="introduce_box">
+            <div class="introduce">
+                <h3 class="title">Project_1</h3>
+                <a>프로젝트 이야기...준비중</a>
+            </div>
+            <div class="introduce">
+                <h3 class="title">팀원</h3>
+                <p>이재석 이주희 최수연</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
