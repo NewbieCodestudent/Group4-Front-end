@@ -1,0 +1,58 @@
+body {
+  min-width: 1130px;
+  box-sizing: border-box;
+}
+#header {
+  position : relative;
+  background-color: white;
+}
+#header_up {
+  position: relative;
+  height: 160px;
+  width: 1130;
+  border-bottom: 1px solid gray;
+}
+#logo {
+  position : relative;
+  height: 100%;
+}
+#logo_img {
+  position : relative;
+  top : 28%;
+  left: 10px;
+  margin : 0;
+  width: 120px;
+}
+#search {
+  position : relative;
+  top : -50%;
+  left: 160px;
+  margin : 0;
+}
+#search_text {
+width: 300px;
+height: 25px;
+}
+#account {
+  position : relative;
+  top : -100%;
+  left : 70%;
+}
+#header_nav {
+  position : relative;
+  width: 1130px;
+}
+ul {
+  list-style: none;
+}
+#nav_box {
+  float : left;
+  font-size : 20px;
+  line-height: 30px;
+  font-weight: 700;
+  color: black;
+  letter-spacing: 0px;
+}
+#header_nav .nav_item {
+  float : left;
+}

@@ -4,68 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            min-width: 1130px;
-            box-sizing: border-box;
-        }
-        #header {
-            position : relative;
-            background-color: white;
-        }
-        #header_up {
-            position: relative;
-            height: 160px;
-            width: 1130;
-            border-bottom: 1px solid gray;
-        }
-        #logo {
-            position : relative;
-            height: 100%;
-        }
-        #logo_img {
-            position : relative;
-            top : 50%;
-            left: 10px;
-            margin : 0;
-        }
-        #search {
-            position : relative;
-            top : -50%;
-            left: 100px;
-            margin : 0;
-        }
-        #account {
-            position : relative;
-            top : -100%;
-            left : 70%;
-        }
-        #header_nav {
-            position : relative;
-            width: 1130px;
-        }
-        ul {
-            list-style: none;
-        }
-        #nav_box {
-            float : left;
-            font-size : 20px;
-            line-height: 30px;
-            font-weight: 700;
-            color: black;
-            letter-spacing: 0px;
-        }
-        #header_nav .nav_item {
-            float : left;
-        }
-    </style>
+    <title>Home</title>
+    <link rel="stylesheet" href="/CSS/header.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
 </head>
 <body>
     <div id="header">
         <div id="header_up">
             <div id="logo">
-                <a id="logo_img" href="home.html">GlofMate</a>
+              <a href="home.html">
+                <img id="logo_img" src="/CSS/logo_small.png" alt="logo_img">
+              </a>  
             </div>
             <div id="search">
                 <from id="search_from">
@@ -81,7 +30,7 @@
         <div id="header_nav">
             <ul class="nav_box">
                 <li class="nav_item">
-                    <a href="모임메인페이지">모임</a>
+                    <a href="club.html">모임</a>
                 </li>
                 <li class="nav_item">
                     <a href="액티비티메인페이지">액티비티</a>
@@ -114,16 +63,27 @@
         </div>
     </div>
     <div id="footer">
-        <div id="introduce_box">
-            <div class="introduce">
-                <h3 class="title">Project_1</h3>
-                <a>프로젝트 이야기...준비중</a>
-            </div>
-            <div class="introduce">
-                <h3 class="title">팀원</h3>
-                <p>이재석 이주희 최수연</p>
-            </div>
+      <div id="title_introduce">
+        <h3 class="title">[ Project 소개 ]</h3>
+      </div>
+      <div id="introduce_box">
+        <div class="introduce">
+          <h3 class="title">Project Name</h3>
+          <a id="project_story">Golf Mate</a>
         </div>
+        <div class="introduce">
+          <h3 class="title">Team Member</h3>
+          <a id="project_member">
+            이재석
+          </a>
+          <a id="project_member">
+            이주희
+          </a>
+          <a id="project_member">
+            최수연
+          </a>
+        </div>
+      </div>
     </div>
 </body>
 </html>
