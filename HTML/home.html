@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>GolfMate</title>
     <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/footer.css">
+    <style>
+      #container {
+        position : relative;
+        width : 1130px;
+        height: 2000px;
+        padding : 20px 30px;
+        display: block;
+      }
+      #container div {
+        display : block;
+      }
+      #event_ad {
+        background-color : blue;
+        width : 1070px;
+        height : 200px;
+      }
+    </style>
 </head>
 <body>
     <div id="header">
@@ -28,7 +45,7 @@
             </div>
         </div>
         <div id="header_nav">
-            <ul class="nav_box">
+            <ul id="nav_box">
                 <li class="nav_item">
                     <a href="club.html">모임</a>
                 </li>
@@ -43,7 +60,9 @@
     </div>
     <div id="container">
         <div id="event_ad">
-            배너광고
+          <iframe style="width: 1070px; height:200px; margin:0px; border:1px solid gray" src="AD.html">
+            <p>배너광고위치 : 브라우저가 지원하지 않습니다.</p>
+          </iframe>
         </div>
         <div id="recommend_club">
             <div>
