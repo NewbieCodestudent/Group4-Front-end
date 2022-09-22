@@ -5,6 +5,22 @@ body {
   font-size : 12px;
   line-height : 16px;
 }
+a:link {
+  color : black;
+  text-decoration-line: none;
+}
+a:visited {
+  color : black;
+  text-decoration-line: none;
+}
+a:hover{
+  color : red;
+  text-decoration-line: underline;
+}
+a:active{
+  color:green;
+  text-decoration-line: none;
+}
 #header {
   width: 1130;
   position : relative;

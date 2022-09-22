@@ -1,89 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>club</title>
+    <title>GolfMate</title>
     <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/footer.css">
-</head>
-<body>
+    <style>
+      #container {
+        position: relative;
+        width: 1130px;
+        height: 1500px;
+        padding: 0px 30px 30px 0px;
+        display: block;
+      }
+      #search_club {
+        background-color: powderblue;
+        height: 200px;
+      }
+      .search_club {
+        display: inline-block;
+        width : 11px;
+        height: 7px;
+
+      }
+    </style>
+  </head>
+  <body>
     <div id="header">
-        <div id="header_up">
-            <div id="logo">
-              <a href="home.html">
-                <img id="logo_img" src="/CSS/logo_small.png" alt="logo_img">
-              </a>  
-            </div>
-            <div id="search">
-                <from id="search_from">
-                    <input id="search_text" type="text" title="검색어">
-                    <button id="serch_btn" type="submit" title="검색" value="검색">검색</button>
-                </from>
-            </div>
-            <div id="account">
-                <a>로그인</a>
-                <a>회원가입</a>
-            </div>
+      <div id="header_up">
+        <div id="logo">
+          <a href="home.html">
+            <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
+          </a>
         </div>
-        <div id="header_nav">
-            <ul class="nav_box">
-                <li class="nav_item">
-                  <a href="club.html">모임</a>
-                </li>
-                <li class="nav_item">
-                    <a href="액티비티메인페이지">액티비티</a>
-                </li>
-                <li class="nav_item">
-                    <a href="이벤트메인페이지">이벤트</a>
-                </li>
-            </ul>
+        <div id="search">
+          <from id="search_from">
+            <input id="search_text" type="text" title="검색어">
+            <button id="serch_btn" type="submit" title="검색" value="검색">검색</button>
+          </from>
         </div>
-    </div>
-    <div id="container">
-        <div id="event_ad">
-            배너광고
-        </div>
-        <div id="recommend_club">
-            <div>
-                <p>추천 모임</p>
-                <a href="모임메인페이지">more</a>
-            </div>
-            <a href="모임추천1">추천1</a>
-            <a href="모임추천2">추천2</a>
-        </div>
-        <div id="recommend_activity">
-            <div>
-                <p>추천 액티비티</p>
-                <a href="액티비티메인페이지">more</a>
-            </div>
-            <a href="액티비티추천1">추천1</a>
-            <a href="액티비티추천2">추천2</a>
-        </div>
-    </div>
-    <div id="footer">
-        <div id="title_introduce">
-          <h3 class="title">[ Project 소개 ]</h3>
-        </div>
-        <div id="introduce_box">
-          <div class="introduce">
-            <h3 class="title">Project Name</h3>
-            <a id="project_story">Golf Mate</a>
-          </div>
-          <div class="introduce">
-            <h3 class="title">Team Member</h3>
-            <a id="project_member">
-              이재석
-            </a>
-            <a id="project_member">
-              이주희
-            </a>
-            <a id="project_member">
-              최수연
-            </a>
-          </div>
+        <div id="account">
+          <a>로그인</a>
+          <a>회원가입</a>
         </div>
       </div>
-</body>
+      <div id="header_nav">
+        <ul id="nav_box">
+          <li class="nav_item">
+            <a href="club.html">모임</a>
+          </li>
+          <li class="nav_item">
+            <a href="액티비티메인페이지">액티비티</a>
+          </li>
+          <li class="nav_item">
+            <a href="이벤트메인페이지">이벤트</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="container">
+      <div id="search_club">
+        상세검색
+        <form action="">
+          <select name="country" id="country" >
+            <option value="">지역</option>
+            <option value="seoul">서울</option>
+            <option value="daejeon">대전</option>
+            <option value="daegu">대구</option>
+            <option value="bussan">부산</option>
+          </select>
+          <select name="age" id="age">
+            <option value="">나이</option>
+            <option value="teenage">10대</option>
+            <option value="twenty">20대</option>
+            <option value="thirty">30대</option>
+            <option value="forty">40대</option>
+            <option value="fifty">50대</option>
+          </select>
+          <select name="male_female" id="male_female">
+            <option value="">성별</option>
+            <option value="male">남자</option>
+            <option value="female">여자</option>
+          </select>
+          <select name="member_count" id="member_count">
+            <option value="">가입자수</option>
+            <option value="m_c_10">10명 이상</option>
+            <option value="m_c_20">20명 이상</option>
+            <option value="m_c_30">30명 이상</option>
+            <option value="m_c_40">40명 이상</option>
+            <option value="m_c_50">50명 이상</option>
+          </select>
+          <select name="search_select" id="search_select">
+            <option value="">검색영역</option>
+            <option value="m_c_10">모임이름</option>
+            <option value="m_c_20">운영자</option>
+          </select>
+          <input type="text" name="search_text" id="search_text">
+          <input type="submit">
+        </form>
+      </div>
+      <div>
+        모임정보
+      </div>
+    </div>
+    <div id="footer">
+      <div id="title_introduce">
+        <h3 class="title">[ Project 소개 ]</h3>
+      </div>
+      <div id="introduce_box">
+        <div class="introduce">
+          <h3 class="title">Project Name</h3>
+          <a id="project_story">Golf Mate</a>
+        </div>
+        <div class="introduce">
+          <h3 class="title">Team Member</h3>
+          <a id="project_member">
+            이재석
+          </a>
+          <a id="project_member">
+            이주희
+          </a>
+          <a id="project_member">
+            최수연
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

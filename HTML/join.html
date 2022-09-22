@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/CSS/header.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
+    <style>
+        #container {
+            position: relative;
+            width: 1130px;
+            height: 1000px;
+            padding: 0px;
+            display: block;
+            background-color: rgba(176, 224, 230, 0.062);
+        }
+        #join_logo_img {
+          width: 350px;
+          height: 350px;
+          background-repeat: no-repeat;
+          position : relative;
+          top: 30%;
+          left: 8%;
+        }
+        #join_box {
+          position : relative;
+          background-color: rgba(135, 240, 125, 0.041);
+          border: 1px solid rgb(32, 99, 26);
+          width : 500px;
+          height: 700px;
+          top : -20%;
+          left : 50%;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <div id="header_up">
+        <div id="logo">
+          <a href="home.html">
+            <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
+          </a>
+        </div>
+        <div id="search">
+          <from id="search_from">
+            <input id="search_text" type="text" title="검색어">
+            <button id="serch_btn" type="submit" title="검색" value="검색">검색</button>
+          </from>
+        </div>
+        <div id="account">
+          <a href="join.html">로그인</a>
+          <a href="join.html">회원가입</a>
+        </div>
+      </div>
+      <div id="header_nav">
+        <ul id="nav_box">
+          <li class="nav_item">
+            <a href="club.html">모임</a>
+          </li>
+          <li class="nav_item">
+            <a href="액티비티메인페이지">액티비티</a>
+          </li>
+          <li class="nav_item">
+            <a href="이벤트메인페이지">이벤트</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="container">
+      <img id="join_logo_img" src="/CSS/logo/logo_large_nobackground.png" alt="join_logo_img">
+      <div id="join_box">
+        <ul>
+          <li><h2>회원가입</h2></li>
+          <li>가입정보를 입력해주세요.</li>
+        </ul>
+        <div id="content">
+          <form class="from_design">
+            <ul>
+              <li>아이디</li>
+              <li><input type="text" maxlength="25" name="id"></li>
+            </ul>
+            <ul>
+              <li>비밀번호</li>
+              <li><input type="password" name="password"></li>
+            </ul>
+            <ul>
+              <li>이름</li>
+              <li><input type="text" name="name"></li>
+            </ul>
+            <ul>
+              <li>생년월일</li>
+              <li><input type="text" name="name"></li>
+            </ul>
+            <ul>
+              <li>성별</li>
+              <li><input type="text" name="name"></li>
+            </ul>
+            <ul>
+              <li>지역</li>
+              <li><input type="text" name="name"></li>
+            </ul>
+            <ul>
+              <li>Hadi</li>
+              <li><input type="text" name="name"></li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div id="title_introduce">
+        <h3 class="title">[ Project 소개 ]</h3>
+      </div>
+      <div id="introduce_box">
+        <div class="introduce">
+          <h3 class="title">Project Name</h3>
+          <a id="project_story">Golf Mate</a>
+        </div>
+        <div class="introduce">
+          <h3 class="title">Team Member</h3>
+          <a id="project_member">
+            이재석
+          </a>
+          <a id="project_member">
+            이주희
+          </a>
+          <a id="project_member">
+            최수연
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
