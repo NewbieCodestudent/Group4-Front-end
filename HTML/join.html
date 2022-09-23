@@ -8,6 +8,7 @@
     <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
     <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/footer.css">
+    <!-- join CSS -->
     <style>
         #container {
             position: relative;
@@ -37,12 +38,19 @@
         }
         #join_box_head {
           padding-left: 20px;
-          font-size: 30px;
+          font-size: 25px;
+          position: relative;
+          left: 29%;
+          color : rgba(26, 138, 26, 0.753);
+          letter-spacing : 7px;
         }
-        .title {
+        .join_title {
           margin:0px;
           padding-bottom: 5px;
           font-size: 20px;
+        }
+        #date {
+          width: 200px;
         }
         #content ul li {
           float: left;
@@ -100,7 +108,8 @@
           background-position: right;
         }
     </style>
-    <script> // 공백체크 코드
+    <script>
+    // 공백체크 코드
       function checkValue() {
         var form = document.userInfo;
 
@@ -137,8 +146,6 @@
         document.userInfo.idDuplication.value ="idUncheck";
       }
     </script>
-    <!-- 년도, 월 selectBox source -->
-    <script src="/JS/datefuntion.js"></script>
   </head>
   <body>
     <div id="header">
@@ -149,7 +156,7 @@
           </a>
         </div>
         <div id="account">
-          <a href="join.html">로그인</a>
+          <a href="login.html">로그인</a>
           <a href="join.html">회원가입</a>
         </div>
       </div>
@@ -176,43 +183,47 @@
         <div id="content">
           <form class="from_design" action="join.html" name="userInfo" onsubmit="return checkValue()">
             <ul>
-              <h3 class="title">아이디</h3>
+              <h3 class="join_title">아이디</h3>
               <li><input class="input_text" type="text" maxlength="25" name="id" onkeydown="inputIdCheck()"></li>
               <!-- onkeydown : 중복체크 후 수정할 경우를 방지하기 위한 기능 -->
               <li><input id="idcheck" type="button" value="중복확인" onclick="openIdChk()"></li>
               <li><input type="hidden" name="idUncheck" value="idUncheck"></li>
             </ul>
             <ul>
-              <h3 class="title">비밀번호</h3>
+              <h3 class="join_title">비밀번호</h3>
               <li><input class="input_text" type="password" name="password" value="password"></li>
             </ul>
             <ul>
-              <h3 class="title">비밀번호 확인</h3>
+              <h3 class="join_title">비밀번호 확인</h3>
               <li><input class="input_text" type="password" name="passwordcheck" value="password"></li>
             </ul>
             <ul>
-              <h3 class="title">이름</h3>
+              <h3 class="join_title">이름</h3>
               <li><input class="input_text" type="text" name="name" value="name"></li>
             </ul>
             <ul>
-              <h3 class="title">생년월일</h3>
-              <li><select name="year" id="year" title="년도" class="year" onchange="javascript:lastday();"></select>년</li>
+              <h3 class="join_title">생년월일</h3>
+              <li><input type="date" name="date" id="date" class="date" title="생년월일"></li>
+              <script>// date 오늘 날짜 세팅
+                document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+              </script>
+              <!-- <li><select name="year" id="year" title="년도" class="year" onchange="javascript:lastday();"></select>년</li>
               <li><select name="month" id="month" title="월" class="month" onchange="javascript:lastday();"></select>월</li>
-              <li><select name="day" id="day" title="일" class="day"></select>일</li>
+              <li><select name="day" id="day" title="일" class="day"></select>일</li> -->
             </ul>
             <ul>
-              <h3 class="title">성별</h3>
+              <h3 class="join_title">성별</h3>
               <li><input type="radio" name="gender" value="남">남</li>
               <li><input type="radio" name="gender" value="여">여</li>
             </ul>
             <ul>
-              <h3 class="title">지역</h3>
+              <h3 class="join_title">지역</h3>
               <li><input type="text" name="country" value="country"></li>
             </ul>
-            <ul>
-              <h3 class="title">Hadi</h3>
+            <!-- <ul>
+              <h3 class="join_title">Hadi</h3>
               <li><input type="text" name="hadi" value="hadi"></li>
-            </ul>
+            </ul> -->
             <ul>
               <li><input id="submit_btn" type="submit" name="join" value="가입"></li>
             </ul>

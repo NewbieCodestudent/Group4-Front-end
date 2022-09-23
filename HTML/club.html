@@ -7,25 +7,7 @@
     <title>GolfMate</title>
     <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/footer.css">
-    <style>
-      #container {
-        position: relative;
-        width: 1130px;
-        height: 1500px;
-        padding: 0px 30px 30px 0px;
-        display: block;
-      }
-      #search_club {
-        background-color: powderblue;
-        height: 200px;
-      }
-      .search_club {
-        display: inline-block;
-        width : 11px;
-        height: 7px;
-
-      }
-    </style>
+    <link rel="stylesheet" href="/CSS/club_all.css">
   </head>
   <body>
     <div id="header">
@@ -36,8 +18,8 @@
           </a>
         </div>
         <div id="account">
-          <a>로그인</a>
-          <a>회원가입</a>
+          <a href="login.html">로그인</a>
+          <a href="join.html">회원가입</a>
         </div>
       </div>
       <div id="header_nav">
@@ -95,8 +77,110 @@
           <input type="submit">
         </form>
       </div>
-      <div>
-        모임정보
+      <!-- 정렬 버튼 -->
+      <div id="clubSort">
+        <ul id="clubSort_left">
+          <li>최신순</li>
+          <li>제목순</li>
+          <li>가입자수</li>
+        </ul>
+        <ul id="clubSort_right">
+          <li><a>목록</a></li>
+          <li><a>모임개설</a></li>
+        </ul>
+      </div>
+      <!-- 모임출력 -->
+      <div id="club_All">
+        <!-- <c:forEach var="club" itemid="${requestScope.list}"> -->
+        <div class="club_box">
+          <a href="clubSelect.html">
+            <img class="club_img" src="/CSS/reconmend_club_dumy/test_5.jpg" alt="club">
+            <strong style="font-size:20px;">모임_name</strong>
+            <div class="club_" style="height:30px; margin:0px;">
+              <img class="profill_img" src="/CSS/member_profill_dumy/profill_2.jpg" class="member_profill" title="member_profill" alt="member_profill">
+              <div style="display:inline;">
+                <strong style="font-size:17px;">User_1<br>개설날짜 : 2022.09.22</strong>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="club_box">
+          <a href="clubDetailAction.do?num=${club.num}$pageNum=${pageNum}">
+            <img class="club_img" src="/CSS/reconmend_club_dumy/test_5.jpg" alt="club">
+            <strong style="font-size:20px;">모임_name</strong>
+            <div class="club_" style="height:30px; margin:0px;">
+              <img class="profill_img" src="/CSS/member_profill_dumy/profill_2.jpg" class="member_profill" title="member_profill" alt="member_profill">
+              <div style="display:inline;">
+                <strong style="font-size:17px;">User_1<br>개설날짜 : 2022.09.22</strong>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="club_box">
+          <a href="clubDetailAction.do?num=${club.num}$pageNum=${pageNum}">
+            <img class="club_img" src="/CSS/reconmend_club_dumy/test_5.jpg" alt="club">
+            <strong style="font-size:20px;">모임_name</strong>
+            <div class="club_" style="height:30px; margin:0px;">
+              <img class="profill_img" src="/CSS/member_profill_dumy/profill_2.jpg" class="member_profill" title="member_profill" alt="member_profill">
+              <div style="display:inline;">
+                <strong style="font-size:17px;">User_1<br>개설날짜 : 2022.09.22</strong>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="club_box">
+          <a href="clubDetailAction.do?num=${club.num}$pageNum=${pageNum}">
+            <img class="club_img" src="/CSS/reconmend_club_dumy/test_5.jpg" alt="club">
+            <strong style="font-size:20px;">모임_name</strong>
+            <div class="club_" style="height:30px; margin:0px;">
+              <img class="profill_img" src="/CSS/member_profill_dumy/profill_2.jpg" class="member_profill" title="member_profill" alt="member_profill">
+              <div style="display:inline;">
+                <strong style="font-size:17px;">User_1<br>개설날짜 : 2022.09.22</strong>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="club_box">
+          <a href="clubDetailAction.do?num=${club.num}$pageNum=${pageNum}">
+            <img class="club_img" src="/CSS/reconmend_club_dumy/test_5.jpg" alt="club">
+            <strong style="font-size:20px;">모임_name</strong>
+            <div class="club_" style="height:30px; margin:0px;">
+              <img class="profill_img" src="/CSS/member_profill_dumy/profill_2.jpg" class="member_profill" title="member_profill" alt="member_profill">
+              <div style="display:inline;">
+                <strong style="font-size:17px;">User_1<br>개설날짜 : 2022.09.22</strong>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="club_box">
+          <a href="clubDetailAction.do?num=${club.num}$pageNum=${pageNum}">
+            <img class="club_img" src="/CSS/reconmend_club_dumy/test_5.jpg" alt="club">
+            <strong style="font-size:20px;">모임_name</strong>
+            <div class="club_" style="height:30px; margin:0px;">
+              <img class="profill_img" src="/CSS/member_profill_dumy/profill_2.jpg" class="member_profill" title="member_profill" alt="member_profill">
+              <div style="display:inline;">
+                <strong style="font-size:17px;">User_1<br>개설날짜 : 2022.09.22</strong>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- </c:forEach> -->
+      </div>
+      <!-- 하단 번호 -->
+      <div id="club_All_Number">
+        <c:if test="${startPage != 1}">
+          <a href=`clubListAction.do?page=${startPage-1}`>[ 이전 ]</a>
+        </c:if>
+        <c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
+          <!-- &nbsp : space의 특수문자코드 -->
+          <c:if test="${pageNum == spage}">${pageNum}&nbsp;</c:if>
+          <c:if test="${pageNum != spage}">
+            <a href = `culbListAtion.do?page=${pageNum}`>${pageNum}&nbsp;</a>
+          </c:if>
+        </c:forEach>
+        <c:if test="${endPage != maxPage}">
+          <a href=`clubListAction.do?page=${endPage+1}`>[ 다음 ]</a>
+        </c:if>
       </div>
     </div>
     <div id="footer">

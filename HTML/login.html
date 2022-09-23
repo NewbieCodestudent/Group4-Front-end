@@ -7,16 +7,85 @@
     <title>GolfMate</title>
     <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/footer.css">
+    <!-- 로그인 CSS -->
     <style>
-        #container {
-            position: relative;
-            width: 1130px;
-            height: 1000px;
-            padding: 0px;
-            display: block;
-            background-color: rgba(176, 224, 230, 0.342);
+      #container {
+        position: relative;
+        width: 1130px;
+        height: 1000px;
+        padding: 0px;
+        display: block;
+        background-color: rgba(176, 224, 230, 0.062);
+      }
+      #login_logo_img {
+        width: 350px;
+        height: 350px;
+        background-repeat: no-repeat;
+        position : relative;
+        top: 30%;
+        left: 8%;
+      }
+      #login_box {
+          position : relative;
+          background-color: rgba(135, 240, 125, 0.041);
+          border: 1px solid rgb(32, 99, 26);
+          margin: 0px;
+          width : 500px;
+          height: 400px;
+          top : -8%;
+          left : 50%;
         }
-    </style>
+        #login_btn {
+          width: 300px;
+          height:40px;
+          position:relative;
+          left:70%;
+          transform: translateX(-50%);
+          background: linear-gradient(125deg,#81eca5,#71e75c,#81ec95);
+          background-position: left;
+          background-size: 200%;
+          color:white;
+          font-weight: bold;
+          border:none;
+          cursor:pointer;
+          transition: 0.4s;
+          display:inline;
+          border-radius: 20px 20px 20px 20px;
+        }
+        #login_btn:hover {
+          background-position: right;
+        }
+        #login_head {
+          font-size: 25px;
+          position: relative;
+          left: 37%;
+          color : rgba(26, 138, 26, 0.753);
+          letter-spacing : 7px;
+        }
+        .login_title img {
+          width: 52px;
+          height: 52px;
+          padding-right: 0px;
+        }
+        #login_box #id,#pw {
+          width: 370px;
+          height: 50px;
+          padding: 0px;
+          border: 0px;
+          background-color: rgba(236, 236, 236, 0.479);
+          font-size : 15px;
+        }
+        #login_box ul{
+          width: 450px;
+          display : inline-block;
+        }
+        #login_box ul li {
+          float : left;
+        }
+        ::placeholder {
+          color : forestgreen
+        }
+  </style>
   </head>
   <body>
     <div id="header">
@@ -46,9 +115,28 @@
       </div>
     </div>
     <div id="container">
-        <img id="logo_img" src="" alt="">
+        <img id="login_logo_img" src="/CSS/logo/logo_large_nobackground.png" alt="join_logo_img">
         <div id="login_box">
-
+          <div id="login_head">
+            <h2>로그인</h2>
+          </div>
+          <form action="login" method="post">
+            <ul style="margin-top: 27px;">
+              <li class="login_title"><img src="/CSS/icon/login_id.PNG" alt="login_icon"></li>
+              <li><input type="text" id="id" name="id" placeholder="아이디를 입력해주세요."></li>
+            </ul>
+            <ul>
+              <li class="login_title"><img src="/CSS/icon/login_password.png" alt="login_password"></li>
+              <li><input type="password" id="pw" name="pw" placeholder="비밀번호를 입력해주세요."></li>
+            </ul>
+            <ul>
+              <li><input id="login_btn" type="submit" value="로그인"></li>
+            </ul>
+            <ul style="font-size: 15px; letter-spacing: 1px; position: relative; left: 10%;">
+              <li style="padding-right: 10px;">아직 GolfMate 회원이 아닌가요?</li>
+              <li><a href="join.html"><strong><ins>회원가입</ins></strong></a></li>
+            </ul>
+          </form>
         </div>
     </div>
     <div id="footer">

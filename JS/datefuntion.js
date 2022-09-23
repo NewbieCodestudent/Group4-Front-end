@@ -1,3 +1,4 @@
+// 년도, 월 selectBox source
 $(document).ready(function(){
   setYearBox();
   setMonthBox();
