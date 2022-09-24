@@ -1,32 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>
-        function searchPost() {
-            let searchValue = document.getElementById('search-input').value.trim();
-            if (searchValue.length > 1) {
-                location.href = "/blog/search/" + searchValue + "/";
-            } else {
-                alert('검색어(' + searchValue + ')가 너무 짧습니다.');
-            }
-        };
-    </script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+   .hidden {
+      display: none;
+   }
+</style>
 </head>
 <body>
-    <!-- Search widget-->
-<div class="card mb-4">
-    <div class="card-header">Search</div>
-    <div class="card-body">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Enter search term..."
-                   aria-label="Enter search term..." aria-describedby="button-search" id="search-input"/>
-            <button class="btn btn-primary" id="button-search" type="button" onclick="searchPost()">Go!</button>
-        </div>
-    </div>
-</div>
+   <h3>selectOne.jsp</h3>
+   <jsp:include page="top_menu.jsp"></jsp:include>
+   <h3>게시글</h3>
+   <table>
+      <tbody>
+         <tr>
+            <td colspan="3">
+            <a href="b_update.do?club_id=${param.club_id}&&board_id=${param.board_id}">게시글 수정</a>
+            <a href="b_delete.do?club_id=${param.club_id}&&board_id=${param.board_id}">게시글 삭제</a>
+            </td>
+         </tr>
+         <tr class="hidden">
+            <td><label for="notice">카테고리:</label></td>
+            <td colspan="2">${vo1.notice}</td>
+         </tr>
+         <tr>
+         <tr>
+            <td><label for="board_id">게시글 번호:</label></td>
+            <td colspan="2">${param.board_id}</td>
+         </tr>
+         <tr>
+            <td><label for="title">제목:</label></td>
+            <td colspan="2">${vo1.title}</td>
+         </tr>
+         <tr>
+            <td><label for="writer">작성자:</label></td>
+            <td colspan="2">${vo1.writer}</td>
+         </tr>
+         <tr>
+            <td><label for="wdate">작성일자:</label></td>
+            <td colspan="2">${vo1.wdate}</td>
+         </tr>
+         <tr>
+            <td><label for="content">내용:</label></td>
+            <td colspan="2">${vo1.content}</td>
+         </tr>
+         <tr>
+            <td><label for="upFile">파일:</label></td>
+            <td colspan="2"><img width="30" alt="ingName" src="upload/${vo1.fname}"></td>
+         </tr>
+      </tbody>
+   </table>
+   
+   <h3>댓글입력</h3>
+   <form action="c_insertOK.do" method="post" enctype="multipart/form-data">
+      <table>
+         <tbody>
+            <tr>
+               <td><label for="comment">content:</label></td>
+               <td><input type="text" placeholder="comment" id="comment" name="comment" value="comment"></td>
+               <td><input type="submit" value="작성글 게시"></td>
+            </tr>
+<!--             <tr> -->
+<!--                <td><label for="upFile">upFile:</label></td> -->
+<!--                <td><input type="file" name="upFile" id="upFile" name="upFile"></td> -->
+<!--                <td></td> -->
+<!--             </tr> -->
+            <tr>
+               <td><label for="club_id"></label>
+               <td><input type="hidden" placeholder="club_id" id="club_id" name="club_id" value="${param.club_id}"></td>
+               <td>${param.club_id}</td>
+            </tr>
+            <tr>
+               <td><label for="board_id"></label>
+               <td><input type="hidden" placeholder="board_id" id="board_id" name="board_id" value="${param.board_id}"></td>
+               <td>${param.board_id}</td>
+            </tr>
+         </tbody>
+      </table>
+   </form>
+   
+   <h3>댓글목록(${vos.size()})</h3>
+   <table>
+      <tbody>
+         <c:forEach var="vo" items="${vos}">
+            <tr>
+               <td colspan="2">${vo.commenter}(${vo.cdate})</td>
+               <td>
+               <a href="c_deleteOK.do?club_id=${param.club_id}&&board_id=${param.board_id}&&comment_id=${vo.comment_id}">댓글 삭제</a>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="3">${vo.comment}</td>
+            </tr>
+         </c:forEach>
+         
+      </tbody>
+   </table>
+      
 </body>
 </html>

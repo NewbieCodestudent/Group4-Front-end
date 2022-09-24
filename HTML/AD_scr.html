@@ -24,18 +24,18 @@
 <body>
     <a id="AD_link" href="" target="_parent">
         <img src="" alt="AD_view" id="AD_view">
-        <script>
-            const ad_number = Math.floor(Math.random() * 3);
-            // console.log(ad_number);
-            var img_view = "/CSS/AD/AD_test_"+ad_number+".png";
-            // console.log(img_view);
-            document.getElementById("AD_view").src = img_view;
-            var img_link = "AD.html";
-            document.getElementById("AD_view").href = img_link;
-        </script>
     </a>
     <img src="/CSS/AD/AD_test_0.png" alt="AD">
     <img src="/CSS/AD/AD_test_1.png" alt="AD">
     <img src="/CSS/AD/AD_test_2.png" alt="AD">
+    <script>
+        const ad_number = Math.floor(Math.random() * 3);
+        // console.log(ad_number);
+        var img_view = "/CSS/AD/AD_test_"+ad_number+".png";
+        // console.log(img_view);
+        document.getElementById("AD_view").src = img_view;
+        var img_link = "www.naver.com";
+        document.getElementById("AD_link").href = img_link;
+    </script>
 </body>
 </html>
