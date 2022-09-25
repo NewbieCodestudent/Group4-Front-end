@@ -51,33 +51,25 @@
     <div id="header">
         <div id="header_up">
           <div id="logo">
-            <a href="home.do">
+            <a href="/HTML/home.html">
               <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
             </a>
           </div>
           <div id="account">
-        	${member_id}
-			<c:choose>
-				<c:when test="${member_id == null}">
-					<a href="login.do">로그인</a>
-					<a href="member_join.do">회원가입</a>
-				</c:when>
-				<c:otherwise>
-					<a href="logout.do">로그아웃</a>
-				</c:otherwise>
-			</c:choose>
+            <a href="/HTML/login.html">로그인</a>
+            <a href="/HTML/join.html">회원가입</a>
           </div>
         </div>
         <div id="header_nav">
           <ul id="nav_box">
             <li class="nav_item">
-              <a href="club_selectAll.do">모임</a>
+              <a href="/club/selectAll.html">모임</a>
             </li>
             <li class="nav_item">
-              <a href="activity_selectAll.do">액티비티</a>
+              <a href="/activity/selectAll.html">액티비티</a>
             </li>
             <li class="nav_item">
-              <a href="event_selectALl.do">이벤트</a>
+              <a href="/event/selectALl.html">이벤트</a>
             </li>
           </ul>
         </div>
@@ -103,9 +95,6 @@
                         </script>
                     </strong>
                     <strong>act_name</strong>
-                </p>
-                <p style="font-size: 30px; padding-left: 30px; color: forestgreen;">
-                    
                 </p>
             </div>
         </div>
