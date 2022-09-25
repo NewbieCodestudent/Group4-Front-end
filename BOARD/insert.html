@@ -7,40 +7,162 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>모임_게시판</title>
-  <link rel="stylesheet" href="CSS/header.css">
-  <link rel="stylesheet" href="CSS/footer.css">
+  <title>모임_게시글 작성</title>
+  <link rel="stylesheet" href="/CSS/header.css">
+  <link rel="stylesheet" href="/CSS/footer.css">
   <style>
     #container {
+      position: relative;
       height: 1000px;
     }
     #club_name_box {
-      background-color: rgba(164, 219, 201, 0.307);
-      height: 150px;
+      position: relative;
+      background-color: rgba(157, 221, 171, 0.648);
+      width: 1130px;
+      height: 140px;
     }
-
-
+    #club_title {
+        position: absolute;
+        background-color: white;
+        width: 1070px;
+        height:80px;
+        margin: 30px;
+    }
+    #club_content {
+      position: relative;
+      width: 1130px;
+      height: 50px;
+      margin: 0px;
+      font-weight: bold;
+      border-bottom: 5px solid blue;
+    }
+    #club_content ul {
+      position: absolute;
+      margin: 15px 0px;
+    }
+    #club_content ul li {
+      display: inline-block;
+      margin: 0px;
+      padding: 0px 10px;
+      font-size: 20px;
+    }
+    #board_content_box {
+      position: relative;
+      height: 800px;
+      width: 1130px;
+    }
+    #board_insert_box {
+      position: absolute;
+      width: 1050px;
+      height: 690px;
+      margin: 30px 20px;
+      padding: 20px;
+      border: 1px solid black;
+    }
+    #notice {
+      width: 100px;
+      font-size: 20px;
+      height: 35px;
+      border-radius: 5px;
+      border: 2px solid gray;
+      margin-bottom: 15px;
+    }
+    #title {
+      width: 500px;
+      height: 35px;
+      border-radius: 5px;
+      font-size: 20px;
+      border: 2px solid gray;
+    }
+    #content {
+      position: relative;
+      width : 1050px;
+      height: 550px;
+      border-radius: 5px;
+      border: 2px solid gray;
+      font-size: 18px;
+      margin-bottom: 25px;
+      vertical-align: top;
+    }
+    #filebox label{
+      position: relative;
+      padding: 5px 30px;
+      background-color:rgb(121, 130, 121);
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    #upFile {
+      display: none;
+      position: absolute;
+    }
+    #upFileName {
+      position: absolute;
+      bottom: 5.5%;
+      left: 14%;
+      font-size: 20px;
+      font-weight: bold;
+      border: 2px solid gray;
+      border-radius: 5px;
+      width: 300px;
+      height: 30px;
+      text-align: center;
+      line-height: normal;
+    }
+    #submit {
+      position: absolute;
+      bottom: 2%;
+      width: 100px;
+      height: 40px;
+      font-size: 28px;
+      background-color: rgb(79, 155, 79);
+      color: white;
+      border-radius: 5px;
+      border: 1px solid gray;
+      left: 88%;
+    }
   </style>
+  <!-- 파일 이름 출력해주는 구문 -->
+  <script type="text/javascript">
+    function fileUpload(){
+      var fileInput = document.getElementsByName("upFile");
+  
+      for( var i=0; i<fileInput.length; i++ ){
+        if( fileInput[i].files.length > 0 ){
+          for( var j = 0; j < fileInput[i].files.length; j++ ){
+            console.log(fileInput[i].files[j].name); // 파일명 출력
+            document.getElementById("upFileName").innerHTML = fileInput[i].files[j].name;
+          }
+        }
+      }
+  
+    }
+  </script>
 </head>
 <body>
+	<!-- headarea -->
   <div id="header">
     <div id="header_up">
       <div id="logo">
         <a href="home.do">
-          <img id="logo_img" src="CSS/logo/logo_small.png" alt="logo_img">
+          <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
         </a>
       </div>
       <div id="account">
-        ${member_id}
-    <c:choose>
-      <c:when test="${member_id == null}">
-        <a href="login.do">로그인</a>
-        <a href="member_join.do">회원가입</a>
-      </c:when>
-      <c:otherwise>
-        <a href="logout.do">로그아웃</a>
-      </c:otherwise>
-    </c:choose>
+      ${member_id}
+  <c:choose>
+    <c:when test="${member_id == null}">
+      <a href="login.do">로그인</a>
+      <a href="member_join.do">회원가입</a>
+      <style>#account {left : 90%;}</style>
+    </c:when>
+    <c:otherwise>
+      <a href="mypage.do">마이페이지</a>
+      <a href="logout.do">로그아웃</a>
+      <style>#account {left : 83%;}</style>
+    </c:otherwise>
+  </c:choose>
       </div>
     </div>
     <div id="header_nav">
@@ -49,59 +171,82 @@
           <a href="club_selectAll.do">모임</a>
         </li>
         <li class="nav_item">
-          <a href="액티비티메인페이지">액티비티</a>
+          <a href="activity_selectAll.do">액티비티</a>
         </li>
         <li class="nav_item">
-          <a href="이벤트메인페이지">이벤트</a>
+          <a href="event_selectAll.do">이벤트</a>
         </li>
       </ul>
     </div>
   </div>
+
   <div id="container">
-  <div>
-      <div id="club_name_box">
-        <p>club_name</p>
+    <div id="club_name_box">
+      <div id="club_title">
+        <p style="font-size: 30px; padding-left: 30px;">
+            <!-- 모집중, 모집마감 변수 설정 구역 -->
+            <strong id="var">
+                <script>
+                    // 변수 var = 모집관련 boolean
+                    var club_id = 0;
+                    if(club_id == 0) {
+                        document.write("모집중");
+                        document.getElementById('var').style.color = "blue";
+                    } else if(club_id == 1) {
+                        document.write("모집마감");
+                        document.getElementById('var').style.color = "red";
+                    }
+                </script>
+            </strong>
+            <strong>club_name</strong>
+        </p>
       </div>
-      
     </div>
-    <div>
-      게시글 액티비티 앨범 투표
+
+    <div id="club_content">
+      <ul>
+        <li><a href="board_selectAll.do">게시글</a></li>
+        <li><a href="activity_selectAll.do">액티비티</a></li>
+        <li><a href="album_selectAll.do">앨범</a></li>
+        <li><a href="vote_selectAll.do">투표</a></li>
+      </ul>
     </div>
-  
-    <h3>insert.jsp</h3>
-	
-	<form action="board_insertOK.do?club_id=20" method="post" enctype="multipart/form-data">
-		<table>
-			<tbody>
-				<tr>
-					<select name="notice">
-					    <option value="0">게시글</option>
-					    <option value="1">공지</option>
-					</select>
-				</tr>
-				<tr>
-					<td><label for="title">title:</label>
-					<td><input type="text" placeholder="title" id="title" name="title" value="title1"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td><label for="content">content:</label></td>
-					<td><input type="text" placeholder="content" id="content" name="content" value="content"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td><label for="upFile">upFile:</label></td>
-					<td><input type="file" name="upFile" id="upFile" name="upFile"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td colspan="3"><input type="submit" value="작성글 게시"></td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-    
+
+    <div id="board_content_box">
+      <div style="font-size: 20px; font-weight: bold; position:relative; top: 2%; left: 95%;">
+        <a href="board_selectAll.do">목록</a>
+      </div>
+      <div id="board_insert_box">
+        <!-- 작성일 출력 -->
+        <div id="current_date" style="font-size: 20px; position: absolute; top: 4%; left: 82%; font-weight: bold;"></p>
+          <script>
+          date = new Date();
+          year = date.getFullYear();
+          month = date.getMonth() + 1;
+          day = date.getDate();
+          document.getElementById("current_date").innerHTML = "작성일 : " + year + "." + month + "." + day;
+          </script>
+        </div>
+        <!-- 게시글 insert -->
+        <form action="board_insertOK.do?club_id=20" method="post" enctype="multipart/form-data">
+          <select name="notice" id="notice">
+            <option value="0">게시글</option>
+            <option value="1">공지</option>
+          </select>
+          <input type="text" placeholder="title" id="title" name="title" value="title1">
+          <br>
+          <textarea type="text" placeholder="content" id="content" name="content" value="content"></textarea>
+          <!-- <input type="text" placeholder="content" id="content" name="content" value="content"> -->
+          <div id="filebox">
+            <label for="upFile">업로드</label> 
+            <input type="File" id="upFile" name="upFile" onchange="fileUpload()" multiple>
+            <p id="upFileName">파일이름</p>
+          </div>
+          <input id="submit" type="submit" value="게 시">
+        </form>
+      </div>
   </div>
+  
   <div id="footer">
     <div id="title_introduce">
       <h3 class="title">[ Project 소개 ]</h3>

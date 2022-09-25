@@ -33,6 +33,7 @@
         width: 1130px;
         height: 50px;
         margin: 0px;
+        font-weight: bold;
         border-bottom: 5px solid blue;
       }
       #club_content ul {
@@ -50,6 +51,9 @@
         width: 1130px;
       }
       #board_sort_box {
+        display: inline-block;
+      }
+      #sort_list li {
         display: inline-block;
       }
 
@@ -121,10 +125,10 @@
 
     <div id="club_content">
       <ul>
-        <li><b>게시글</b></li>
-        <li><b>액티비티</b></li>
-        <li><b>앨범</b></li>
-        <li><b>투표</b></li>
+        <li><a href="board_selectAll.do">게시글</a></li>
+        <li><a href="activity_selectAll.do">액티비티</a></li>
+        <li><a href="album_selectAll.do">앨범</a></li>
+        <li><a href="vote_selectAll.do">투표</a></li>
       </ul>
     </div>
 
@@ -147,8 +151,8 @@
         <ul style="position: absolute; top: 4%; left: 86%;">
           <li><a href="board_insert.do" style="font-size: 18px;">게시글 작성</a></li>
         </ul>
-        <ul id="" style="padding-left: 20px; font-size:15px;">
-          <li>[작성일기준]</li>
+        <ul id="sort_list" style="padding-left: 20px; font-size:15px;">
+          <li>작성일기준 |</li>
           <li><a href="board_selectAll.do?club_id=20&&order=desc">내림차순</a></li>
           <li><a href="board_selectAll.do?club_id=20&&order=asc">오름차순</a></li>
         </ul>
