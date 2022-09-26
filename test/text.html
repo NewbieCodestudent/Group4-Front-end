@@ -5,51 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    label { font-family: "Noto Sans KR", \"Noto Sans KR\"; font-size: 16px; font-weight: 400; line-height: 1.5em; }
-    .btn { display: inline-block; margin-bottom: 0; font-weight: normal; text-align: center; vertical-align: middle; -ms-touch-action: manipulation; touch-action: manipulation; cursor: pointer; background-image: none; border: 1px solid transparent; white-space: nowrap; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; border-radius: 4px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
-    .btn-primary { color: #ffffff; background-color: #337ab7; border-color: #2e6da4; text-decoration: none; }
-    #input-file { display:none; }
-
-    .input-file-button{
-      padding: 6px 25px;
-      background-color:#FF6600;
-      border-radius: 4px;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
-  <script>
-    jQuery(document).ready(function($) {
-      var target_id = "input-file"; $("#" + target_id).bind('change', function() {
-        selectFile(this.files, target_id);
-      });
-    });
-    // 파일 선택시 function selectFile(fileObject, target_id) { var files = null; var totalFileSize = 0;
-    // 직접 파일 등록시 files = jQuery('#' + target_id)[0].files;
-    // 다중파일 등록 if (files != null) { for (var i = 0; i < files.length; i++) {
-    // 파일 이름 var fileName = files[i].name; var fileNameArr = fileName.split("\.");
-    // 확장자 var ext = fileNameArr[fileNameArr.length - 1]; var fileSize = files[i].size;
-    // 파일 사이즈(단위 :byte) console.log("fileSize="+fileSize); if (fileSize <= 0) { console.log("0kb file return"); return; } var fileSizeKb = fileSize / 1024;
-    // 파일 사이즈(단위 :kb) var fileSizeMb = fileSizeKb / 1024;
-    // 파일 사이즈(단위 :Mb) var fileSizeStr = ""; if ((1024*1024) <= fileSize) {
-    // 파일 용량이 1메가 이상인 경우 console.log("fileSizeMb="+fileSizeMb.toFixed(2)); fileSizeStr = fileSizeMb.toFixed(2) + " Mb"; } else if ((1024) <= fileSize) { console.log("fileSizeKb="+parseInt(fileSizeKb)); fileSizeStr = parseInt(fileSizeKb) + " kb"; } else { console.log("fileSize="+parseInt(fileSize)); fileSizeStr = parseInt(fileSize) + " byte"; }
-    // 업로드 파일 목록 생성 jQuery("#target_file_wrap").find('span').html('첨부 된 파일은 : ' + fileName + ' (' + fileSizeStr + ')'); } } else { alert("ERROR"); } }
-  </script>
 </head>
 <body>
-<input type="file" id="input-file">업로드</label>
-<label>첨부파일</label>
-<div id="target_file_wrap">
-<a href="#" onclick="jQuery('#input-file').click()" class="btn btn-primary">첨부파일 선택</a>
-</div>
-<br>
-
-<label for="input-file">업로드 test1</label>
-<input type="file" id="input-file"/>
-<br>
-
-<label className="input-file-button" for="input-file2">업로드test2</label>
-<input type="file" id="input-file2" style="display:none">
+  <form action="nextpage.php" method="post" name="formname">
+    <textarea name="Text1" cols="40" rows="5"></textarea>
+</form>
 </body>
 </html>

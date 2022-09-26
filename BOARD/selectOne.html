@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="/CSS/header.css">
   <link rel="stylesheet" href="/CSS/footer.css">
   <link rel="stylesheet" href="/CSS/board/selectOne.css">
+  <script>
+    function board_delete(){
+      window.name = "parentForm";
+      window.open("delete.html","delete_page", "width=500, height=300, resizable=no, scrollbars=no");
+    }
+  </script>
 </head>
 <body>
   <!-- header 영역 -->
@@ -54,7 +60,6 @@
 
   <!-- container 영역 -->
   <div id="container">
-  <div>
     <!-- 모임이름표시 -->
     <div id="club_name_box">
       <div id="club_title">
@@ -96,7 +101,8 @@
             <a href="board_update.do?club_id=${param.club_id}&&board_id=${param.board_id}">수정</a>
           </li>
           <li>
-            <a href="board_delete.do?club_id=${param.club_id}&&board_id=${param.board_id}">삭제</a>
+            <button onclick="board_delete()">삭제</button>
+            <a href="board_delete.do?club_id=${param.club_id}&&board_id=${param.board_id}" id="delete_page" name="delete_page">삭제</a>
           </li>
           <li>
             <a href="board_insert.do">작성</a>
@@ -124,35 +130,39 @@
         </ul>
       </div>
       <div id="selectContent">
-        <label for="content">내용:</label>${vo1.content}
-      </div>
-      <div>
+        <label for="content">${vo1.content}</label><br>
         <label for="upFile">파일:</label>
         <img width="30" alt="ingName" src="upload/board/${vo1.fname}">
       </div>
-    </div>
-    <!-- 댓글공간 -->
-    <div id="comment_box">
-      <div id="comment_insert">
-        <form action="comment_insertOK.do" method="post" enctype="multipart/form-data">
-          <input type="text" placeholder="comment" id="comment" name="comment" value="comment">
-          <input type="submit" value="작성글 게시">
-          <input type="hidden" placeholder="club_id" id="club_id" name="club_id" value="${param.club_id}">
-          ${param.club_id}
-          <input type="hidden" placeholder="board_id" id="board_id" name="board_id" value="${param.board_id}">
-          ${param.board_id}
-        </form>
+      <div id="selectFile">
+        <a href="${vo1.fname}" download=""><button>다운로드</button> : ${vo1.fname}</a>
       </div>
-      <div id="comment_selectAll">
-        <ul>
-          <li>댓글(${vos.size()})</li>
-          <li></li>
-          <c:forEach var="vo" items="${vos}">
-		        ${vo.commenter}(${vo.cdate})
-		        <a href="comment_deleteOK.do?club_id=${param.club_id}&&board_id=${vo.board_id}&&comment_id=${vo.comment_id}">댓글삭제</a>
-		    	  ${vo.comment}
-	        </c:forEach>
-        </ul>
+    </div>
+
+    <!-- 댓글공간 -->
+    <div id="comment_insert">
+      <form action="comment_insertOK.do" method="post" enctype="multipart/form-data" id="comment_box">
+        <textarea name="comment" id="comment" placeholder="댓글을 작성해주세요."></textarea>
+        <input type="submit" value="등 록" id="submit">
+        <input type="hidden" placeholder="club_id" id="club_id" name="club_id" value="${param.club_id}">
+        <input type="hidden" placeholder="board_id" id="board_id" name="board_id" value="${param.board_id}">
+      </form>
+    </div>
+    <div id="comment_selectAll">
+      <ul class="comment_selectAll_1">
+        <li><img src="/CSS/icon/comment.png" alt="comment" style="width: 30px;"></li>
+        <li style="height: 24px;">댓글(${vos.size()})</li>
+      </ul>
+      <div style="overflow:auto; height: 420px;">
+        <c:forEach var="vo" items="${vos}">
+          <ul class="comment_selectAll_1" style="overflow:auto;">
+            <li style="line-height: 28px;">
+              ${vo.commenter}(${vo.cdate})<br>
+              <a id="comment_delete" href="comment_deleteOK.do?club_id=${param.club_id}&&board_id=${vo.board_id}&&comment_id=${vo.comment_id}">댓글삭제</a>
+              ${vo.comment}
+            </li>
+          </ul>
+        </c:forEach>
       </div>
     </div>
   </div>
