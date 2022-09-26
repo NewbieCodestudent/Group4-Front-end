@@ -10,119 +10,7 @@
   <title>모임_게시글 작성</title>
   <link rel="stylesheet" href="/CSS/header.css">
   <link rel="stylesheet" href="/CSS/footer.css">
-  <style>
-    #container {
-      position: relative;
-      height: 1000px;
-    }
-    #club_name_box {
-      position: relative;
-      background-color: rgba(157, 221, 171, 0.648);
-      width: 1130px;
-      height: 140px;
-    }
-    #club_title {
-        position: absolute;
-        background-color: white;
-        width: 1070px;
-        height:80px;
-        margin: 30px;
-    }
-    #club_content {
-      position: relative;
-      width: 1130px;
-      height: 50px;
-      margin: 0px;
-      font-weight: bold;
-      border-bottom: 5px solid blue;
-    }
-    #club_content ul {
-      position: absolute;
-      margin: 15px 0px;
-    }
-    #club_content ul li {
-      display: inline-block;
-      margin: 0px;
-      padding: 0px 10px;
-      font-size: 20px;
-    }
-    #board_content_box {
-      position: relative;
-      height: 800px;
-      width: 1130px;
-    }
-    #board_insert_box {
-      position: absolute;
-      width: 1050px;
-      height: 690px;
-      margin: 30px 20px;
-      padding: 20px;
-      border: 1px solid black;
-    }
-    #notice {
-      width: 100px;
-      font-size: 20px;
-      height: 35px;
-      border-radius: 5px;
-      border: 2px solid gray;
-      margin-bottom: 15px;
-    }
-    #title {
-      width: 500px;
-      height: 35px;
-      border-radius: 5px;
-      font-size: 20px;
-      border: 2px solid gray;
-    }
-    #content {
-      position: relative;
-      width : 1050px;
-      height: 550px;
-      border-radius: 5px;
-      border: 2px solid gray;
-      font-size: 18px;
-      margin-bottom: 25px;
-      vertical-align: top;
-    }
-    #filebox label{
-      position: relative;
-      padding: 5px 30px;
-      background-color:rgb(121, 130, 121);
-      border-radius: 4px;
-      color: white;
-      cursor: pointer;
-      font-size: 20px;
-    }
-    #upFile {
-      display: none;
-      position: absolute;
-    }
-    #upFileName {
-      position: absolute;
-      bottom: 5.5%;
-      left: 14%;
-      font-size: 20px;
-      font-weight: bold;
-      border: 2px solid gray;
-      border-radius: 5px;
-      width: 300px;
-      height: 30px;
-      text-align: center;
-      line-height: normal;
-    }
-    #submit {
-      position: absolute;
-      bottom: 2%;
-      width: 100px;
-      height: 40px;
-      font-size: 28px;
-      background-color: rgb(79, 155, 79);
-      color: white;
-      border-radius: 5px;
-      border: 1px solid gray;
-      left: 88%;
-    }
-  </style>
+  <link rel="stylesheet" href="/CSS/board/insert.css">
   <!-- 파일 이름 출력해주는 구문 -->
   <script type="text/javascript">
     function fileUpload(){
@@ -180,6 +68,7 @@
     </div>
   </div>
 
+  <!-- container 영역 -->
   <div id="container">
     <div id="club_name_box">
       <div id="club_title">
@@ -202,16 +91,14 @@
         </p>
       </div>
     </div>
-
     <div id="club_content">
       <ul>
-        <li><a href="board_selectAll.do">게시글</a></li>
+        <li><a href="board_selectAll.do" style="color:blue;">게시글</a></li>
         <li><a href="activity_selectAll.do">액티비티</a></li>
         <li><a href="album_selectAll.do">앨범</a></li>
         <li><a href="vote_selectAll.do">투표</a></li>
       </ul>
     </div>
-
     <div id="board_content_box">
       <div style="font-size: 20px; font-weight: bold; position:relative; top: 2%; left: 95%;">
         <a href="board_selectAll.do">목록</a>
@@ -247,6 +134,7 @@
       </div>
   </div>
   
+  <!-- footer 영역 -->
   <div id="footer">
     <div id="title_introduce">
       <h3 class="title">[ Project 소개 ]</h3>

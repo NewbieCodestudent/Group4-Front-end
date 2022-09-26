@@ -6,42 +6,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GolfMate</title>
+    <title>모임</title>
     <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/footer.css">
-    <link rel="stylesheet" href="/CSS/clubpage.css">
+    <link rel="stylesheet" href="/CSS/club/clubpage.css">
   </head>
   <body>
+    <!-- header 영역 -->
     <div id="header">
       <div id="header_up">
         <div id="logo">
-          <a href="/HTML/home.html">
+          <a href="home.do">
             <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
           </a>
         </div>
         <div id="account">
-          <a href="/HTML/login.html">로그인</a>
-          <a href="/HTML/join.html">회원가입</a>
+          ${member_id}
+          <c:choose>
+            <c:when test="${member_id == null}">
+              <a href="login.do">로그인</a>
+              <a href="member_join.do">회원가입</a>
+              <style>#account {left : 90%;}</style>
+            </c:when>
+            <c:otherwise>
+              <a href="mypage.do">마이페이지</a>
+              <a href="logout.do">로그아웃</a>
+              <style>#account {left : 83%;}</style>
+            </c:otherwise>
+          </c:choose>
         </div>
       </div>
       <div id="header_nav">
         <ul id="nav_box">
           <li class="nav_item">
-            <a href="/club/selectAll.html">모임</a>
+            <a href="club_selectAll.do">모임</a>
           </li>
           <li class="nav_item">
-            <a href="/activity/selectAll.html">액티비티</a>
+            <a href="activity_selectAll.do">액티비티</a>
           </li>
           <li class="nav_item">
-            <a href="/event/selectALl.html">이벤트</a>
+            <a href="event_selectAll.do">이벤트</a>
           </li>
         </ul>
       </div>
     </div>
+
+    <!-- container 영역 -->
     <div id="container">
         <div id="club_intro_background">
           <div id="club_info">
-            <a href="settin page" title="모임설정" sec:authorize="isleader()"><img src="/CSS/icon/setting_icon.png" alt="setting" style="width:30px; margin: 0px; position: absolute; left:97%; top:1%;"></a>
+            <a href="settin page" title="모임설정" sec:authorize="isleader()">
+              <img src="/CSS/icon/setting_icon.png" alt="setting" style="width:30px; padding:10px; position: absolute; left:95%;">
+            </a>
             <div class="club_box">
               <div id="club_img">
                 <img src="/CSS/reconmend_club_dumy/test_3.jpg" alt="club_img">
@@ -52,7 +68,7 @@
                 <ul id="club_leader_info">
                   <li>이름 : 홍길동</li>
                   <li>성별 : 남</li>
-                  <li>나이 : 37세</li>
+                  <li>나이(만) : 37세</li>
                   <li>지역 : 대전</li>
                 </ul>
               </div>
@@ -140,6 +156,8 @@
           </div>
         </div>
     </div>
+
+    <!-- footer 영역 -->
     <div id="footer">
       <div id="title_introduce">
         <h3 class="title">[ Project 소개 ]</h3>

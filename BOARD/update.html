@@ -23,24 +23,28 @@
   </style>
 </head>
 <body>
+  <!-- header 영역 -->
   <div id="header">
     <div id="header_up">
       <div id="logo">
         <a href="home.do">
-          <img id="logo_img" src="CSS/logo/logo_small.png" alt="logo_img">
+          <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
         </a>
       </div>
       <div id="account">
         ${member_id}
-    <c:choose>
-      <c:when test="${member_id == null}">
-        <a href="login.do">로그인</a>
-        <a href="member_join.do">회원가입</a>
-      </c:when>
-      <c:otherwise>
-        <a href="logout.do">로그아웃</a>
-      </c:otherwise>
-    </c:choose>
+        <c:choose>
+          <c:when test="${member_id == null}">
+            <a href="login.do">로그인</a>
+            <a href="member_join.do">회원가입</a>
+            <style>#account {left : 90%;}</style>
+          </c:when>
+          <c:otherwise>
+            <a href="mypage.do">마이페이지</a>
+            <a href="logout.do">로그아웃</a>
+            <style>#account {left : 83%;}</style>
+          </c:otherwise>
+        </c:choose>
       </div>
     </div>
     <div id="header_nav">
@@ -49,14 +53,16 @@
           <a href="club_selectAll.do">모임</a>
         </li>
         <li class="nav_item">
-          <a href="액티비티메인페이지">액티비티</a>
+          <a href="activity_selectAll.do">액티비티</a>
         </li>
         <li class="nav_item">
-          <a href="이벤트메인페이지">이벤트</a>
+          <a href="event_selectAll.do">이벤트</a>
         </li>
       </ul>
     </div>
   </div>
+
+  <!-- container 영역 -->
   <div id="container">
   <div>
       <div id="club_name_box">
@@ -112,6 +118,8 @@
 	</form>
     
   </div>
+
+  <!-- footer 영역 -->
   <div id="footer">
     <div id="title_introduce">
       <h3 class="title">[ Project 소개 ]</h3>

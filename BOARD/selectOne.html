@@ -8,39 +8,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>모임_게시판</title>
-  <link rel="stylesheet" href="CSS/header.css">
-  <link rel="stylesheet" href="CSS/footer.css">
-  <style>
-    #container {
-      height: 1000px;
-    }
-    #club_name_box {
-      background-color: rgba(164, 219, 201, 0.307);
-      height: 150px;
-    }
-
-
-  </style>
+  <link rel="stylesheet" href="/CSS/header.css">
+  <link rel="stylesheet" href="/CSS/footer.css">
+  <link rel="stylesheet" href="/CSS/board/selectOne.css">
 </head>
 <body>
+  <!-- header 영역 -->
   <div id="header">
     <div id="header_up">
       <div id="logo">
         <a href="home.do">
-          <img id="logo_img" src="CSS/logo/logo_small.png" alt="logo_img">
+          <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
         </a>
       </div>
       <div id="account">
         ${member_id}
-    <c:choose>
-      <c:when test="${member_id == null}">
-        <a href="login.do">로그인</a>
-        <a href="member_join.do">회원가입</a>
-      </c:when>
-      <c:otherwise>
-        <a href="logout.do">로그아웃</a>
-      </c:otherwise>
-    </c:choose>
+        <c:choose>
+          <c:when test="${member_id == null}">
+            <a href="login.do">로그인</a>
+            <a href="member_join.do">회원가입</a>
+            <style>#account {left : 90%;}</style>
+          </c:when>
+          <c:otherwise>
+            <a href="mypage.do">마이페이지</a>
+            <a href="logout.do">로그아웃</a>
+            <style>#account {left : 83%;}</style>
+          </c:otherwise>
+        </c:choose>
       </div>
     </div>
     <div id="header_nav">
@@ -49,107 +43,121 @@
           <a href="club_selectAll.do">모임</a>
         </li>
         <li class="nav_item">
-          <a href="액티비티메인페이지">액티비티</a>
+          <a href="activity_selectAll.do">액티비티</a>
         </li>
         <li class="nav_item">
-          <a href="이벤트메인페이지">이벤트</a>
+          <a href="event_selectAll.do">이벤트</a>
         </li>
       </ul>
     </div>
   </div>
+
+  <!-- container 영역 -->
   <div id="container">
   <div>
-      <div id="club_name_box">
-        <p>club_name</p>
+    <!-- 모임이름표시 -->
+    <div id="club_name_box">
+      <div id="club_title">
+        <p style="font-size: 30px; padding-left: 30px;">
+            <!-- 모집중, 모집마감 변수 설정 구역 -->
+            <strong id="var">
+                <script>
+                    // 변수 var = 모집관련 boolean
+                    var club_id = 0;
+                    if(club_id == 0) {
+                        document.write("모집중");
+                        document.getElementById('var').style.color = "blue";
+                    } else if(club_id == 1) {
+                        document.write("모집마감");
+                        document.getElementById('var').style.color = "red";
+                    }
+                </script>
+            </strong>
+            <strong>club_name</strong>
+        </p>
       </div>
-      
-    </div>
-    <div>
-      게시글 액티비티 앨범 투표
     </div>
     
-  
-    <h3>selectOne.jsp</h3>
-	
-	<h3>게시글 출력</h3>
-	<table>
-		<tbody>
-			<tr>
-				<td colspan="3">
-				<a href="board_update.do?club_id=${param.club_id}&&board_id=${param.board_id}">게시글 수정</a>
-				<a href="board_delete.do?club_id=${param.club_id}&&board_id=${param.board_id}">게시글 삭제</a>
-				</td>
-			</tr>
-			<tr>
-				<td><label for="notice">카테고리:</label></td>
-				<td colspan="2">${vo1.notice}</td>
-			</tr>
-			<tr>
-			<tr>
-				<td><label for="board_id">게시글 번호:</label></td>
-				<td colspan="2">${param.board_id}</td>
-			</tr>
-			<tr>
-				<td><label for="title">제목:</label></td>
-				<td colspan="2">${vo1.title}</td>
-			</tr>
-			<tr>
-				<td><label for="writer">작성자:</label></td>
-				<td colspan="2">${vo1.writer}</td>
-			</tr>
-			<tr>
-				<td><label for="wdate">작성일자:</label></td>
-				<td colspan="2">${vo1.wdate}</td>
-			</tr>
-			<tr>
-				<td><label for="content">내용:</label></td>
-				<td colspan="2">${vo1.content}</td>
-			</tr>
-			<tr>
-				<td><label for="upFile">파일:</label></td>
-				<td colspan="2"><img width="30" alt="ingName" src="upload/board/${vo1.fname}"></td>
-			</tr>
-		</tbody>
-	</table>
-	<h3>댓글입력</h3>
-	<form action="comment_insertOK.do" method="post" enctype="multipart/form-data">
-		<table>
-			<tbody>
-				<tr>
-					<td><input type="text" placeholder="comment" id="comment" name="comment" value="comment"></td>
-					<td><input type="submit" value="작성글 게시"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td><input type="hidden" placeholder="club_id" id="club_id" name="club_id" value="${param.club_id}"></td>
-					<td>${param.club_id}</td>
-				</tr>
-				<tr>
-					<td><input type="hidden" placeholder="board_id" id="board_id" name="board_id" value="${param.board_id}"></td>
-					<td>${param.board_id}</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-	
-	
-	<h3>댓글 출력</h3>
-	<table>
-			<tr>
-				<td colspan="3">댓글(${vos.size()})</td>
-			</tr>
-		<c:forEach var="vo" items="${vos}">
-		   	<tr>
-		           <td>${vo.commenter}(${vo.cdate})</td>
-		           <td><a href="comment_deleteOK.do?club_id=${param.club_id}&&board_id=${vo.board_id}&&comment_id=${vo.comment_id}">댓글삭제</a></td>
-		    </tr>
-		    <tr>
-		    	<td>${vo.comment}</td>
-		    </tr>
-	     </c:forEach>
-	</table>
+    <!-- 모임 카테고리 -->
+    <div id="club_content">
+      <ul>
+        <li><a href="board_selectAll.do" style="color:blue;">게시글</a></li>
+        <li><a href="activity_selectAll.do">액티비티</a></li>
+        <li><a href="album_selectAll.do">앨범</a></li>
+        <li><a href="vote_selectAll.do">투표</a></li>
+      </ul>
+    </div>
     
+    <!-- selectOne 구역 -->
+    <div id="selectOne_box">
+      <div id="update_delete_insert">
+        <ul style="margin: 0%;">
+          <li>
+            <a href="board_update.do?club_id=${param.club_id}&&board_id=${param.board_id}">수정</a>
+          </li>
+          <li>
+            <a href="board_delete.do?club_id=${param.club_id}&&board_id=${param.board_id}">삭제</a>
+          </li>
+          <li>
+            <a href="board_insert.do">작성</a>
+          </li>
+        </ul>
+      </div>
+      <div id="selectOne_top">
+        <ul style="padding-left: 20px;">
+          <!-- 보류...-->
+          <script>
+            var type1 = "<%=vo1.notice%>";
+            var type2 = "<%=param.board_id%>";
+            if (type1 = 0) {
+              document.getElementsByName('name').innerHtml = "공지";
+            } else {
+              document.getElementsByName('name').innerHtml = "<%=param.board_id%>";
+            }
+          </script>
+          <!-- <li><label for="notice">공지</label></li>${vo1.notice}
+          <li><label for="board_id">게시글 번호:</label>${param.board_id}</li> -->
+          <li name="type" style="width: 80px; border-right: 3px solid gray;">공지</li>
+          <li style="width: 540px; text-align: left; padding-left: 20px; border-right: 3px solid gray;"><label for="title">제목 : </label>${vo1.title}</li>
+          <li style="width: 200px; border-right: 3px solid gray;"><label for="writer">작성자 : </label>${vo1.writer}</li>
+          <li style="width: 200px;"><label for="wdate">작성일자 : </label>${vo1.wdate}</li>
+        </ul>
+      </div>
+      <div id="selectContent">
+        <label for="content">내용:</label>${vo1.content}
+      </div>
+      <div>
+        <label for="upFile">파일:</label>
+        <img width="30" alt="ingName" src="upload/board/${vo1.fname}">
+      </div>
+    </div>
+    <!-- 댓글공간 -->
+    <div id="comment_box">
+      <div id="comment_insert">
+        <form action="comment_insertOK.do" method="post" enctype="multipart/form-data">
+          <input type="text" placeholder="comment" id="comment" name="comment" value="comment">
+          <input type="submit" value="작성글 게시">
+          <input type="hidden" placeholder="club_id" id="club_id" name="club_id" value="${param.club_id}">
+          ${param.club_id}
+          <input type="hidden" placeholder="board_id" id="board_id" name="board_id" value="${param.board_id}">
+          ${param.board_id}
+        </form>
+      </div>
+      <div id="comment_selectAll">
+        <ul>
+          <li>댓글(${vos.size()})</li>
+          <li></li>
+          <c:forEach var="vo" items="${vos}">
+		        ${vo.commenter}(${vo.cdate})
+		        <a href="comment_deleteOK.do?club_id=${param.club_id}&&board_id=${vo.board_id}&&comment_id=${vo.comment_id}">댓글삭제</a>
+		    	  ${vo.comment}
+	        </c:forEach>
+        </ul>
+      </div>
+    </div>
   </div>
+
+  <!-- footer 영역 -->
   <div id="footer">
     <div id="title_introduce">
       <h3 class="title">[ Project 소개 ]</h3>

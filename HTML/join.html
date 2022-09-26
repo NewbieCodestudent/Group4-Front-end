@@ -129,7 +129,7 @@
         }
         // 비밀번호와 비밀번호 확인이 동일한지 확인하는 코드
         if(form.password.value != form.passwordcheck.value) {
-          alert("비밀번호를 다릅니다.");
+          alert("비밀번호가 다릅니다.");
           return false;
         }
         if(!form.name.value) {
@@ -150,32 +150,46 @@
     </script>
   </head>
   <body>
+    <!-- header 영역 -->
     <div id="header">
       <div id="header_up">
         <div id="logo">
-          <a href="/HTML/home.html">
+          <a href="home.do">
             <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
           </a>
         </div>
         <div id="account">
-          <a href="/HTML/login.html">로그인</a>
-          <a href="/HTML/join.html">회원가입</a>
+          ${member_id}
+          <c:choose>
+            <c:when test="${member_id == null}">
+              <a href="login.do">로그인</a>
+              <a href="member_join.do">회원가입</a>
+              <style>#account {left : 90%;}</style>
+            </c:when>
+            <c:otherwise>
+              <a href="mypage.do">마이페이지</a>
+              <a href="logout.do">로그아웃</a>
+              <style>#account {left : 83%;}</style>
+            </c:otherwise>
+          </c:choose>
         </div>
       </div>
       <div id="header_nav">
         <ul id="nav_box">
           <li class="nav_item">
-            <a href="/club/selectAll.html">모임</a>
+            <a href="club_selectAll.do">모임</a>
           </li>
           <li class="nav_item">
-            <a href="/activity/selectAll.html">액티비티</a>
+            <a href="activity_selectAll.do">액티비티</a>
           </li>
           <li class="nav_item">
-            <a href="/event/selectALl.html">이벤트</a>
+            <a href="event_selectAll.do">이벤트</a>
           </li>
         </ul>
       </div>
     </div>
+
+    <!-- container 영역 -->
     <div id="container">
       <img id="join_logo_img" src="/CSS/logo/logo_large_nobackground.png" alt="join_logo_img">
       <div id="join_box">
@@ -233,6 +247,8 @@
         </div>
       </div>
     </div>
+
+    <!-- footer 영역 -->
     <div id="footer">
       <div id="title_introduce">
         <h3 class="title">[ Project 소개 ]</h3>

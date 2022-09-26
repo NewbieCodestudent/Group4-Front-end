@@ -10,45 +10,49 @@
     <title>GolfMate_전체모임</title>
     <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/footer.css">
-    <link rel="stylesheet" href="/CSS/club_all.css">
+    <link rel="stylesheet" href="/CSS/club/club_all.css">
 </head>
 <body>
 	<!-- headarea -->
-    <div id="header">
-        <div id="header_up">
-          <div id="logo">
-            <a href="home.do">
-              <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
-            </a>
-          </div>
-          <div id="account">
-        	${member_id}
-			<c:choose>
-				<c:when test="${member_id == null}">
-					<a href="login.do">로그인</a>
-					<a href="member_join.do">회원가입</a>
-				</c:when>
-				<c:otherwise>
-					<a href="logout.do">로그아웃</a>
-				</c:otherwise>
-			</c:choose>
-          </div>
-        </div>
-        <div id="header_nav">
-          <ul id="nav_box">
-            <li class="nav_item">
-              <a href="club_selectAll.do">모임</a>
-            </li>
-            <li class="nav_item">
-              <a href="activity_selectAll.do">액티비티</a>
-            </li>
-            <li class="nav_item">
-              <a href="event_selectAll.do">이벤트</a>
-            </li>
-          </ul>
-        </div>
+  <div id="header">
+    <div id="header_up">
+      <div id="logo">
+        <a href="home.do">
+          <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
+        </a>
+      </div>
+      <div id="account">
+        ${member_id}
+        <c:choose>
+          <c:when test="${member_id == null}">
+            <a href="login.do">로그인</a>
+            <a href="member_join.do">회원가입</a>
+            <style>#account {left : 90%;}</style>
+          </c:when>
+          <c:otherwise>
+            <a href="mypage.do">마이페이지</a>
+            <a href="logout.do">로그아웃</a>
+            <style>#account {left : 83%;}</style>
+          </c:otherwise>
+        </c:choose>
+      </div>
     </div>
-    
+    <div id="header_nav">
+      <ul id="nav_box">
+        <li class="nav_item">
+          <a href="club_selectAll.do">모임</a>
+        </li>
+        <li class="nav_item">
+          <a href="activity_selectAll.do">액티비티</a>
+        </li>
+        <li class="nav_item">
+          <a href="event_selectAll.do">이벤트</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- container 영역 -->
 	<div id="container">
       <div id="search_club">
         searchList
@@ -142,8 +146,9 @@
           <a href=`clubListAction.do?page=${endPage+1}`>[ 다음 ]</a>
         </c:if>
       </div>
-    </div>
+  </div>
 	
+  <!-- footer 영역 -->
 	<div id="footer">
       <div id="title_introduce">
         <h3 class="title">[ Project 소개 ]</h3>
