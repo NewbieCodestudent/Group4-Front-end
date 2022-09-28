@@ -4,7 +4,7 @@
 #container {
     position: relative;
     width: 1130px;
-    height: 1100px;
+    height: 1130px;
     display: block;
 }
 #mypage_intro_background {
@@ -41,4 +41,23 @@
 #update_button {
     position: absolute;
     left: 95%;
+}
+#mypage_bottom ul {
+  padding: 0px;
+  margin: 0px;
+}
+#mypage_category {
+  padding: 20px 0px 10px 0px;
+  border-bottom: 5px solid rgb(77, 77, 197);
+}
+#mypage_category ul {
+  margin: auto;
+  padding: 0px 10px;
+}
+#mypage_category li {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  padding: 0px 20px;
 }

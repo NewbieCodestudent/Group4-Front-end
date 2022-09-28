@@ -77,12 +77,57 @@
             </div>
           </div>
         </div>
-        <div class="club_content_box">
-          <div>
-            <a href="mypage_delete.do">탈퇴</a>
+        <!-- 마이페이지 하단부분 -->
+        <div id="mypage_bottom">
+          <div id="mypage_category">
+            <ul>
+              <li id="category_club" style="border-right:5px solid gray; color:rgb(31, 31, 148);">
+                <a onclick="change(1)">모임</a>
+              </li>
+              <li id="category_activity">
+                <a onclick="change(2)">액티비티</a>
+              </li>
+            </ul>
+          </div>
+          <div style="" id="bottom_page_club">
+          <script src="/MYPAGE/mypage_club.js"></script>
+          </div>
+          <div style="display: none;" id="bottom_page_activity">
+            <script src="/MYPAGE/mypage_club.js"></script>
           </div>
         </div>
     </div>
+    
+    <script>
+      var src_club = document.getElementById("bottom_page_club");
+      var src_act = document.getElementById("bottom_page_activity");
+      var club = document.getElementById("category_club");
+      var act = document.getElementById("category_activity");
+      // function change(x) {
+      //   if (x == 1) {
+      //     src.setAttribute('src','/MYPAGE/mypage_club.js');
+      //     club.setAttribute('style','color:rgb(31, 31, 148)');
+      //     act.setAttribute('style','color:black');
+      //   } else if (x == 2) {
+      //     src.setAttribute('src','/MYPAGE/mypage_activity.js');
+      //     act.setAttribute('style','color:rgb(31, 31, 148)');
+      //     club.setAttribute('style','color:black');
+      //   }
+      // }
+      function change(x) {
+        if (x == 1) {
+          src_club.setAttribute('display','');
+          src_act.setAttribute('display','none');
+          club.setAttribute('style','color:rgb(31, 31, 148)');
+          act.setAttribute('style','color:black');
+        } else if (x == 2) {
+          src_club.setAttribute('display','none');
+          src_act.setAttribute('display','');
+          act.setAttribute('style','color:rgb(31, 31, 148)');
+          club.setAttribute('style','color:black');
+        }
+      }
+    </script>
 
     <!-- footer 영역 -->
     <div id="footer">
