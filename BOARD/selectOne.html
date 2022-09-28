@@ -12,10 +12,29 @@
   <link rel="stylesheet" href="/CSS/footer.css">
   <link rel="stylesheet" href="/CSS/board/selectOne.css">
   <script>
-    function board_delete(){
-      window.name = "parentForm";
-      window.open("delete.html","delete_page", "width=500, height=300, resizable=no, scrollbars=no");
-    }
+  /* 삭제를 alert 여는 script문 */
+    function doAction(value) {
+	  if(value == 0) {
+		  location.href = "board_update.do?club_id=${param.club_id}&&board_id=${param.board_id}";
+	  } else if(value == 1) {
+		  var msg = confirm("정말 삭제하시겠습니까?");
+		  if(msg==true){
+			  location.href = "board_deleteOK.do?club_id=20&&board_id=${param.board_id}";  
+		  } else {
+			  return false;
+		  }
+	  } else if(value == 2) {
+		  location.href = "board_insert.do?club_id=${param.club_id}";
+	  }
+  	}
+  	function commentAction(value) {
+  		var msg = confirm("정말 삭제하시겠습니까?");
+		  if(msg==true){
+			  location.href = "comment_deleteOK.do?club_id=${param.club_id}&&board_id=${param.board_id}&&comment_id="+value;  
+		  } else {
+			  return false;
+		  }
+  	}
   </script>
 </head>
 <body>
@@ -86,7 +105,7 @@
     <!-- 모임 카테고리 -->
     <div id="club_content">
       <ul>
-        <li><a href="board_selectAll.do" style="color:blue;">게시글</a></li>
+        <li><a href="board_selectAll.do?club_id=20" style="color:blue;">게시글</a></li>
         <li><a href="activity_selectAll.do">액티비티</a></li>
         <li><a href="album_selectAll.do">앨범</a></li>
         <li><a href="vote_selectAll.do">투표</a></li>
@@ -97,31 +116,13 @@
     <div id="selectOne_box">
       <div id="update_delete_insert">
         <ul style="margin: 0%;">
-          <li>
-            <a href="board_update.do?club_id=${param.club_id}&&board_id=${param.board_id}">수정</a>
-          </li>
-          <li>
-            <button onclick="board_delete()">삭제</button>
-            <a href="board_delete.do?club_id=${param.club_id}&&board_id=${param.board_id}" id="delete_page" name="delete_page">삭제</a>
-          </li>
-          <li>
-            <a href="board_insert.do">작성</a>
-          </li>
+          <li><input type="button" value="수정" onclick="doAction(0)"></li>
+          <li><input type="button" value="삭제" onclick="doAction(1)"></li>		
+		      <li><input type="button" value="작성" onclick="doAction(2)"></li>          
         </ul>
       </div>
       <div id="selectOne_top">
         <ul style="padding-left: 20px;">
-          <!-- 보류...-->
-          <script>
-            var type1 = "<%=vo1.notice%>";
-            var type2 = "<%=param.board_id%>";
-            if (type1 = 0) {
-              document.getElementsByName('name').innerHtml = "공지";
-            } else {
-              document.getElementsByName('name').innerHtml = "<%=param.board_id%>";
-            }
-          </script>
-          <!-- <li><label for="notice">공지</label></li>${vo1.notice}
           <li><label for="board_id">게시글 번호:</label>${param.board_id}</li> -->
           <li name="type" style="width: 80px; border-right: 3px solid gray;">공지</li>
           <li style="width: 540px; text-align: left; padding-left: 20px; border-right: 3px solid gray;"><label for="title">제목 : </label>${vo1.title}</li>
@@ -158,7 +159,14 @@
           <ul class="comment_selectAll_1" style="overflow:auto;">
             <li style="line-height: 28px;">
               ${vo.commenter}(${vo.cdate})<br>
-              <a id="comment_delete" href="comment_deleteOK.do?club_id=${param.club_id}&&board_id=${vo.board_id}&&comment_id=${vo.comment_id}">댓글삭제</a>
+              <input type="button" value="삭제" onclick="commentAction(${vo.comment_id})" id="comment_delete">
+              ${vo.comment}
+            </li>
+          </ul>
+          <ul class="comment_selectAll_1" style="overflow:auto;">
+            <li style="line-height: 28px;">
+              ${vo.commenter}(${vo.cdate})<br>
+              <input type="button" value="삭제" onclick="commentAction(${vo.comment_id})" id="comment_delete">
               ${vo.comment}
             </li>
           </ul>
