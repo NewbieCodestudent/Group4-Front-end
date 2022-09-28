@@ -70,8 +70,10 @@
 }
 .club_content_box {
     position: relative;
-    border: 1px solid black;
     height: 210px;
+}
+.club_content_box:not(:last-child) {
+    border-bottom: 1px solid black;
 }
 .box_title p {
     display: inline-block;

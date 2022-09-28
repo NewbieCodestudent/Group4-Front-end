@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>액티비티</title>
-    <link rel="stylesheet" href="/CSS/header.css">
-    <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/footer.css">
     <style>
         #container {
             position: relative;
@@ -51,25 +51,33 @@
     <div id="header">
         <div id="header_up">
           <div id="logo">
-            <a href="/HTML/home.html">
+            <a href="home.do">
               <img id="logo_img" src="/CSS/logo/logo_small.png" alt="logo_img">
             </a>
           </div>
           <div id="account">
-            <a href="/HTML/login.html">로그인</a>
-            <a href="/HTML/join.html">회원가입</a>
+        	${member_id}
+			<c:choose>
+				<c:when test="${member_id == null}">
+					<a href="login.do">로그인</a>
+					<a href="member_join.do">회원가입</a>
+				</c:when>
+				<c:otherwise>
+					<a href="logout.do">로그아웃</a>
+				</c:otherwise>
+			</c:choose>
           </div>
         </div>
         <div id="header_nav">
           <ul id="nav_box">
             <li class="nav_item">
-              <a href="/club/selectAll.html">모임</a>
+              <a href="club_selectAll.do">모임</a>
             </li>
             <li class="nav_item">
-              <a href="/activity/selectAll.html">액티비티</a>
+              <a href="activity_selectAll.do">액티비티</a>
             </li>
             <li class="nav_item">
-              <a href="/event/selectALl.html">이벤트</a>
+              <a href="event_selectALl.do">이벤트</a>
             </li>
           </ul>
         </div>
@@ -96,44 +104,21 @@
                     </strong>
                     <strong>act_name</strong>
                 </p>
+                <p style="font-size: 30px; padding-left: 30px; color: forestgreen;">
+                    
+                </p>
             </div>
         </div>
         <a href="insert.do"><li>액티비티 개설</li></a>
+       	<div>
+        	<p>접속자 정보 (리더인지 아닌지 -> 수정가능 여부): ${flag}</p>
+       	</div>
         <ul>
-            <a href="update.do"><li>액티비티 수정</li></a>
-            <a href="delete.do"><li>액티비티 삭제</li></a>
+        	<strong>삭제하시겠습니까?</strong>
+            <a href="activity_deleteOK.do?act_id=${param.act_id}"><li>예</li></a>
+            <a href="activity_selectOne.do?act_id=${param.act_id}"><li>아니요</li></a>
         </ul>
-        <div id="insert_box">
-            <div id="insert_content">
-                <div style="padding: 30px;">
-                    <div>
-                        <p>[ 개설자 정보 ]</p>
-                        <p>프로필</p>
-                        <P>이름</P>
-                        <P>성별</P>
-                        <P>나이</P>
-                    </div>
-                    <p>[ 액티비티 정보 ]</p>
-                    <p>지역</p>
-                    <p>기간 : 등록일 마감일</p>
-                    <p>성별</p>
-                    <p>연령대</p>
-                    <div>
-                        <p>인원</p>
-                        <div>
-                            <p>[ 승인된 인원 ]</p>
-                            <!-- c foreach 문으로 출력 -->
-                            <p>user_1</p>
-                        </div>
-                        <div>
-                            <p>[ 신청한 인원 ]</p>
-                            <!-- c foreach 문으로 출력 -->
-                            <P>user_2</P>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <!-- footerarea -->

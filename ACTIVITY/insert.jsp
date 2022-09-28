@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>액티비티 등록</title>
-    <link rel="stylesheet" href="/CSS/header.css">
-    <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/footer.css">
     <style>
         #container {
             position: relative;
@@ -91,47 +91,64 @@
             </div>
         </div>
         <!-- 개발영역(insert) -->
+       
+       
+        
         <div id="insert_box">
             <div id="insert_content">
                 <div style="padding: 30px;">
-                    <form action="insert.do">
+                    <form action="activity_insertOK.do" method="post" enctype="multipart/form-data">
                         <p>개설자_name</p>
                         <p>[ 액티비티 공개여부 ]</p>
                         <select name="club_id" id="club_id" name="club_id">
-                            <option value="">전체공개</option>
-                            <option value="">모임공개</option>
+                            <option value="0">전체공개</option>
+                            <c:forEach var="entry" items="${club}">
+                            	<option value="${entry.key}">${entry.value}</option>
+                            </c:forEach>
                         </select>
                         <p>[ 액티비티명 ]</p>
                         <input type="text" id="act_name" name="act_name">
+                        <p>[ 액티비티 설명글 ]</p>
+                        <textarea id="act_content" name="act_content" rows="5" cols="33">
+						</textarea>
                         <p>[ 성별 ]</p>
                         <select name="gender" id="gender" name="gender">
-                            <option value="all">무관</option>
-                            <option value="male">남</option>
-                            <option value="female">여</option>
+                            <option value="무관">무관</option>
+                            <option value="남">남</option>
+                            <option value="여">여</option>
                         </select>
                         <p>[ 연령대 ]</p>
-                        <select name="age" id="age" name="age">
-                            <option value="all">무관</option>
-                            <option value="age_10">10대</option>
-                            <option value="age_20">20대</option>
-                            <option value="age_30">30대</option>
-                            <option value="age_40">40대</option>
-                            <option value="age_50">50대</option>
-                            <option value="age_60">60대 이상</option>
+                        <select name="age" id="age" name="age", value=0>
+                            <option value=0>무관</option>
+                            <option value="10">10대</option>
+                            <option value="20">20대</option>
+                            <option value="30">30대</option>
+                            <option value="40">40대</option>
+                            <option value="50">50대</option>
+                            <option value="60">60대 이상</option>
                         </select>
                         <P>[ 지역 ]</P>
                         <select name="location" id="location" name="location">
-                            <option value="seoul">서울</option>
-                            <option value="daejeon">대전</option>
-                            <option value="daegu">대구</option>
-                            <option value="bussan">부산</option>
+                            <option value="무관">무관</option>
+                            <option value="서울">서울</option>
+                            <option value="대전">대전</option>
+                            <option value="대구">대구</option>
+                            <option value="부산">부산</option>
                         </select>
-                        <P>[ 비용 ]</P>
-                        <input type="number" id="cost" name="cost">
+                         <P>[ CC명 ]</P>
+                       <select name="cc_id" id="cc_id" name="cc_id">
+                            <c:forEach var="entry" items="${cc}">
+                            	<option value="${entry.key}">${entry.value}</option>
+                            </c:forEach>
+                        </select>
+                        <P>[ 비용(만원) ]</P>
+                        <input type="number" id="cost" name="cost" value="10">
                         <p>[ 라운딩날짜 ]</p>
                         <input type="datetime-local" id="rdate" name="rdate">
                         <p>[ 모집마감일자 ]</p>
                         <input type="datetime-local" id="adate" name="adate">
+                        <p>[ 프로필 사진 지정 ]</p>
+                        <input type="file" id="fname" name="fname"><br>
                         <input type="submit" value="액티비티 개설">
                     </form>
                 </div>
